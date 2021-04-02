@@ -23,7 +23,8 @@ const adminOnly = (Page: NextPage) => () => {
 export const getAdminServerSideProps: GetServerSideProps<{ currentUser: User | null }> = async (ctx) => {
   try {
     const { token } = ctx.req.cookies;
-    restConnector.defaults.headers["Cookie"] = `token=${token}`;
+    restConnector.defaults.headers["cookie"] = `token=${token}`;
+    restConnector.defaults.headers["authorization"] = `Bearer ${token}`;
     const currentUser = await authService.getById("me");
     if (!currentUser || !currentUser.isAdmin) {
       ctx.res.writeHead(302, { Location: "/" }).end();

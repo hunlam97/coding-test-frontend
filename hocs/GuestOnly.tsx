@@ -24,6 +24,7 @@ export const getGuestServerSideProps: GetServerSideProps<{ currentUser: User | n
   try {
     const { token } = ctx.req.cookies;
     restConnector.defaults.headers["Cookie"] = `token=${token}`;
+    restConnector.defaults.headers["authorization"] = `Bearer ${token}`;
     const currentUser = await authService.getById("me");
     if (currentUser) {
       ctx.res.writeHead(302, { Location: "/" }).end();

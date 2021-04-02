@@ -9,14 +9,13 @@ export class AuthService {
     return this.authGateway.ping();
   };
 
-  login = async (body: { email: string; password: string }): Promise<User> => {
-    const { user } = await firebaseClient.auth().signInWithEmailAndPassword(body.email, body.password);
-    return this.getById(user.uid);
+  login = async (body: { email: string; password: string }): Promise<void> => {
+    await firebaseClient.auth().signInWithEmailAndPassword(body.email, body.password);
   };
 
-  signup = async (body: CreateUser): Promise<User> => {
+  signup = async (body: CreateUser): Promise<void> => {
     await this.authGateway.signup(body);
-    return this.login({ email: body.email, password: body.password });
+    await this.login({ email: body.email, password: body.password });
   };
 
   logout = async () => {

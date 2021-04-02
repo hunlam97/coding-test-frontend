@@ -16,9 +16,9 @@ const LoginPage = () => {
 
   const submit = useCallback(async () => {
     if (mode === "LOGIN") {
-      const user = await authService.login({ email, password });
+      await authService.login({ email, password });
     } else {
-      const user = await authService.signup({ email, password, name, dob: moment(dob).toISOString() });
+      await authService.signup({ email, password, name, dob: moment(dob).toISOString() });
     }
   }, [mode, email, password, name, dob]);
 

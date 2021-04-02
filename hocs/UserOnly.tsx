@@ -24,6 +24,7 @@ export const getUserServerSideProps: GetServerSideProps<{ currentUser: User | nu
   try {
     const { token } = ctx.req.cookies;
     restConnector.defaults.headers["Cookie"] = `token=${token}`;
+    restConnector.defaults.headers["authorization"] = `Bearer ${token}`;
     const currentUser = await authService.getById("me");
     if (!currentUser) {
       console.log("no user");

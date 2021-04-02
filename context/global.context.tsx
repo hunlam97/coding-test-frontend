@@ -5,6 +5,7 @@ import nookies from "nookies";
 import { FloatingUser } from "components";
 import { User } from "types";
 import { authService } from "services";
+import { restConnector } from "connector/RestConnector";
 
 export const GlobalContext = createContext<{
   currentUser: User | null;
@@ -21,32 +22,18 @@ export const GlobalContextWrapper = (
 ) => {
   const [currentUser, setCurrentUser] = useState<User | null>(props.currentUser);
 
-  // useEffect(() => {
-  //   const requestHandler = restConnector.interceptors.request.use(
-  //     undefined,
-  //     (error) => {
-
-  //     }
-  //   );
-
-  //   const responseHandler = restConnector.interceptors.response.use();
-
-  //   return () => {
-  //     restConnector.interceptors.request.eject(requestHandler);
-  //     restConnector.interceptors.response.eject(responseHandler);
-  //   }
-  // }, [])
-
   useEffect(() => {
     firebaseClient.auth().onAuthStateChanged(async (user) => {
       if (!user) {
         setCurrentUser(null);
         nookies.destroy(undefined, "token");
         nookies.destroy(undefined, "refreshToken");
+        restConnector.defaults.headers["authorization"] = undefined;
       } else {
         const token = await user.getIdToken();
         nookies.set(undefined, "token", token, { path: "/" });
         nookies.set(undefined, "refreshToken", user.refreshToken, { path: "/" });
+        restConnector.defaults.headers["authorization"] = `Bearer ${token}`;
         setCurrentUser(await authService.getById("me"));
       }
     });
