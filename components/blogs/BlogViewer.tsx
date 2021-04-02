@@ -51,8 +51,16 @@ export const BlogViewer = ({ onClose }: PropsType) => {
             <Text>{title}</Text>
             <Image objectFit="cover" width="100%" src={imageUrl} />
             <Text>{ReactHtmlParser(content)}</Text>
-            {allowEditting && <Button onClick={() => setEditting(true)}>Edit</Button>}
-            {allowEditting && <Button onClick={deleteBlog}>Delete</Button>}
+            {allowEditting && (
+              <Button color="primary" margin="8px" onClick={() => setEditting(true)}>
+                Edit
+              </Button>
+            )}
+            {allowEditting && (
+              <Button color="primary" margin="8px" onClick={deleteBlog}>
+                Delete
+              </Button>
+            )}
           </Box>
         ) : (
           <BlogEditor onClose={() => setEditting(false)} />

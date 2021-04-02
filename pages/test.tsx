@@ -16,13 +16,12 @@ const Test = () => {
 
   return (
     <Container className={styles.container}>
-      <Navigator />
       <Head>
         <title>Coding Test</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <DynamicText ref={dynamicTextRef} />
-      <Input onChange={onChange} />
+      <Input margin="8px" color="primary" onChange={onChange} />
     </Container>
   );
 };

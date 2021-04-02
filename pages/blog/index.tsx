@@ -18,7 +18,7 @@ const SAMPLE_BLOG: Blog = {
 };
 
 const BlogPage: NextPage = () => {
-  const [blogs, setBlogs] = useState<Blog[]>([SAMPLE_BLOG, SAMPLE_BLOG, SAMPLE_BLOG]);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
   const [page, setPage] = useState(0);
 
   useEffect(() => {
@@ -28,7 +28,6 @@ const BlogPage: NextPage = () => {
 
   return (
     <Container maxW="container.lg">
-      <Navigator />
       <Text>BLOGS</Text>
       <SimpleGrid minChildWidth="280px" spacing="24px">
         {blogs.map((blog, index) => (

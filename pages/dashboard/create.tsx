@@ -27,9 +27,20 @@ const BlogCreationPage = () => {
 
   return (
     <Container maxW="container.lg">
-      <Navigator />
-      <Input color="primary" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
-      <Input color="primary" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} placeholder="Image Url" />
+      <Input
+        margin="8px"
+        color="primary"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
+      />
+      <Input
+        margin="8px"
+        color="primary"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+        placeholder="Image Url"
+      />
       <Box>
         <Editor
           editorState={editorState}
@@ -43,7 +54,9 @@ const BlogCreationPage = () => {
           }}
         />
       </Box>
-      <Button onClick={save}>Save</Button>
+      <Button color="primary" margin="8px" onClick={save}>
+        Save
+      </Button>
     </Container>
   );
 };

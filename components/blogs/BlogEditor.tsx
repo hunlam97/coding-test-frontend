@@ -28,8 +28,20 @@ export const BlogEditor = ({ onClose }: PropsType) => {
 
   return (
     <Box borderRadius="8px" boxShadow="2px 1px 10px #888888" backgroundColor="white">
-      <Input color="primary" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" />
-      <Input color="primary" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} placeholder="Image url" />
+      <Input
+        margin="8px"
+        color="primary"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
+      />
+      <Input
+        margin="8px"
+        color="primary"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+        placeholder="Image url"
+      />
       <Box>
         <Editor
           editorState={editorState}
@@ -43,8 +55,12 @@ export const BlogEditor = ({ onClose }: PropsType) => {
           }}
         />
       </Box>
-      <Button onClick={save}>Save</Button>
-      <Button onClick={onClose}>Cancel</Button>
+      <Button color="primary" margin="8px" onClick={save}>
+        Save
+      </Button>
+      <Button color="primary" margin="8px" onClick={onClose}>
+        Cancel
+      </Button>
     </Box>
   );
 };

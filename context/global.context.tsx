@@ -2,10 +2,11 @@ import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import firebaseClient from "providers/firebaseClient";
 import nookies from "nookies";
 
-import { FloatingUser } from "components";
+import { FloatingUser, Navigator } from "components";
 import { User } from "types";
 import { authService } from "services";
 import { restConnector } from "connector/RestConnector";
+import { useRouter } from "next/router";
 
 export const GlobalContext = createContext<{
   currentUser: User | null;
@@ -21,6 +22,7 @@ export const GlobalContextWrapper = (
   }>
 ) => {
   const [currentUser, setCurrentUser] = useState<User | null>(props.currentUser);
+  const router = useRouter();
 
   useEffect(() => {
     firebaseClient.auth().onAuthStateChanged(async (user) => {
@@ -29,12 +31,14 @@ export const GlobalContextWrapper = (
         nookies.destroy(undefined, "token");
         nookies.destroy(undefined, "refreshToken");
         restConnector.defaults.headers["authorization"] = undefined;
+        router.push("/login");
       } else {
         const token = await user.getIdToken();
         nookies.set(undefined, "token", token, { path: "/" });
         nookies.set(undefined, "refreshToken", user.refreshToken, { path: "/" });
         restConnector.defaults.headers["authorization"] = `Bearer ${token}`;
         setCurrentUser(await authService.getById("me"));
+        router.push("/test");
       }
     });
   }, []);
@@ -50,6 +54,7 @@ export const GlobalContextWrapper = (
 
   return (
     <GlobalContext.Provider value={{ currentUser, setCurrentUser }}>
+      <Navigator />
       <FloatingUser />
       {props.children}
     </GlobalContext.Provider>

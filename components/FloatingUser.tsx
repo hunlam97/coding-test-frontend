@@ -15,8 +15,13 @@ export const FloatingUser = () => {
       </MenuButton>
       <MenuList>
         <MenuItem onClick={() => authService.ping()}>Ping</MenuItem>
+        <MenuItem onClick={() => router.push("/blog")}>Blog</MenuItem>
+        {currentUser?.isAdmin && <MenuItem onClick={() => router.push("/dashboard")}>dashboard</MenuItem>}
         {currentUser ? (
-          <MenuItem onClick={() => authService.logout()}>Logout</MenuItem>
+          <>
+            <MenuItem onClick={() => router.push("/test")}>Test 1</MenuItem>
+            <MenuItem onClick={() => authService.logout()}>Logout</MenuItem>
+          </>
         ) : (
           <MenuItem onClick={() => router.push("/login")}>Login</MenuItem>
         )}

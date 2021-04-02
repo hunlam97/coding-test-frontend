@@ -28,12 +28,35 @@ const LoginPage = () => {
         <title>{mode}</title>
       </Head>
       <Text as="h3">{mode}</Text>
-      <Input placeholder="Email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <Input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <Input
+        color="primary"
+        margin="8px"
+        placeholder="Email"
+        type="text"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <Input
+        color="primary"
+        margin="8px"
+        placeholder="Password"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
       {mode === "SIGNUP" && (
         <>
-          <Input placeholder="Name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
           <Input
+            color="primary"
+            margin="8px"
+            placeholder="Name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            color="primary"
+            margin="8px"
             placeholder="DoB"
             type="date"
             value={dob}
@@ -41,8 +64,12 @@ const LoginPage = () => {
           />
         </>
       )}
-      <Button onClick={submit}>{mode}</Button>
-      <Button onClick={() => setMode(mode === "LOGIN" ? "SIGNUP" : "LOGIN")}>Switch</Button>
+      <Button color="primary" margin="8px" onClick={submit}>
+        {mode}
+      </Button>
+      <Button color="primary" margin="8px" onClick={() => setMode(mode === "LOGIN" ? "SIGNUP" : "LOGIN")}>
+        Switch
+      </Button>
     </Container>
   );
 };

@@ -26,7 +26,7 @@ export const Navigator = () => {
       ));
   }, [pathname]);
   return (
-    <Breadcrumb spacing="8px" separator="/">
+    <Breadcrumb margin="14px" spacing="8px" separator="/">
       {crumbs}
     </Breadcrumb>
   );
