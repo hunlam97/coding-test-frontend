@@ -23,6 +23,7 @@ export class AuthGateway {
   };
 
   ping = async () => {
+    console.log(process.env.API_BASE_URL);
     const resp = await restConnector.get(`/users/ping`);
     return resp.data;
   };
