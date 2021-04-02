@@ -5,7 +5,7 @@ export type DynamicTextRef = {
   changeValue: (newValue: string) => void;
 };
 
-const DynamicText = forwardRef<DynamicTextRef>((_, ref) => {
+export const DynamicText = forwardRef<DynamicTextRef>((_, ref) => {
   const [value, setValue] = useState("Random Text");
 
   const changeValue = (newValue: string) => {
@@ -20,5 +20,3 @@ const DynamicText = forwardRef<DynamicTextRef>((_, ref) => {
     </Text>
   );
 });
-
-export default DynamicText;
