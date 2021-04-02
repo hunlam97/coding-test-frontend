@@ -47,7 +47,7 @@ export const GlobalContextWrapper = (
         const token = await user.getIdToken();
         nookies.set(undefined, "token", token, { path: "/" });
         nookies.set(undefined, "refreshToken", user.refreshToken, { path: "/" });
-        setCurrentUser(await authService.getById(user.uid));
+        setCurrentUser(await authService.getById("me"));
       }
     });
   }, []);
