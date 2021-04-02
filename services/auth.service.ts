@@ -6,8 +6,6 @@ export class AuthService {
   constructor(private authGateway: AuthGateway) {}
 
   ping = async () => {
-    const document = await firebaseClient.firestore().collection("blogs").doc("mqrUxWP5Ym9jjeJ5gFxI").get();
-    console.log({ ...document.data(), id: document.id });
     return this.authGateway.ping();
   };
 
