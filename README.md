@@ -1,4 +1,4 @@
-Front end with NextJs, ChakraUI and Firebase. Up and running at coding-test-lovat.vercel.app. Integrated with Serverless backend on AWS Lambda.
+Front end with NextJs, ChakraUI and Firebase. Up and running at `coding-test-lovat.vercel.app`. Integrated with Serverless backend on AWS Lambda.
 
 Admin credentials
 Email: admin@mail.com
