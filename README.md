@@ -1,14 +1,7 @@
-Front end with NextJs, ChakraUI and Firebase. Up and running at `coding-test-lovat.vercel.app`. Integrated with Serverless backend on AWS Lambda.
+Serverless backend with NestJs, TypeORM, Postgres and Firebase Admin. Up and running at https://1tyuaqxn8c.execute-api.us-east-1.amazonaws.com/dev/. Integrated by frontend staging demo and AWS RDS database.
 
-```
-Admin credentials
-Email: admin@mail.com
-Password: 123456
-```
-Including all 3 tests.
+Deploy-ready for AWS Lambda.
 
-Run `yarn` to install all packages.
+Run npm install to install all packages.
 
-Run `yarn dev` to start a local server.
-
-Create `next.config.js` file and add environment variables as needed.
+Run npm start to start a local server at localhost:3000.
